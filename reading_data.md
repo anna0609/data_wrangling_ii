@@ -1,7 +1,7 @@
 Reading Data
 ================
 Minjie Bao
-2020-10-23
+2020-10-24
 
 ## Scrape a table
 
@@ -26,4 +26,39 @@ drug_use_html %>%
   html_table() %>% 
   slice(-1) %>% 
   as_tibble()
+```
+
+## star wars movie info
+
+I want the data from[here](https://www.imdb.com/list/ls070150896/).
+
+``` r
+url = "https://www.imdb.com/list/ls070150896/"
+
+sw_html = read_html(url)
+```
+
+Grab elements that I want.
+
+``` r
+title_vec = 
+  sw_html %>% 
+  html_nodes(css = ".lister-item-header a") %>% 
+html_text()
+
+gross_rev_vec = 
+  sw_html %>% 
+  html_nodes(css = ".text-muted .ghost~ .text-muted+ span") %>% 
+html_text()
+
+runtime_vec = 
+    sw_html %>% 
+  html_nodes(css = ".runtime") %>% 
+html_text()
+
+swm_df = tibble(
+  title = title_vec,
+  gross_rev = gross_rev_vec,
+  runtime = runtime_vec
+)
 ```
