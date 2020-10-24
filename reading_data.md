@@ -112,3 +112,61 @@ brfss_2010 =
     ## )
 
     ## See spec(...) for full column specifications.
+
+## Some data aren’t some nice
+
+Let’s look at Pokemon ..
+
+``` r
+Pokemon_data =
+    GET("https://pokeapi.co/api/v2/pokemon/1") %>% 
+  content
+Pokemon_data$name
+```
+
+    ## [1] "bulbasaur"
+
+``` r
+Pokemon_data$height
+```
+
+    ## [1] 7
+
+``` r
+Pokemon_data$abilities
+```
+
+    ## [[1]]
+    ## [[1]]$ability
+    ## [[1]]$ability$name
+    ## [1] "overgrow"
+    ## 
+    ## [[1]]$ability$url
+    ## [1] "https://pokeapi.co/api/v2/ability/65/"
+    ## 
+    ## 
+    ## [[1]]$is_hidden
+    ## [1] FALSE
+    ## 
+    ## [[1]]$slot
+    ## [1] 1
+    ## 
+    ## 
+    ## [[2]]
+    ## [[2]]$ability
+    ## [[2]]$ability$name
+    ## [1] "chlorophyll"
+    ## 
+    ## [[2]]$ability$url
+    ## [1] "https://pokeapi.co/api/v2/ability/34/"
+    ## 
+    ## 
+    ## [[2]]$is_hidden
+    ## [1] TRUE
+    ## 
+    ## [[2]]$slot
+    ## [1] 3
+
+## closing thoughts
+
+Be reasonable
